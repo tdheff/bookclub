@@ -1,0 +1,30 @@
+doctype html
+html(lang="en")
+  head
+    link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700')
+    link(rel='stylesheet', href='/css/reset.css')
+    link(rel='stylesheet', href='/css/index.css')
+    script(type='text/javascript', src='/js/mustache.js')
+    script(type='text/javascript', src='/js/jquery-2.1.0.min.js')
+    script(type='text/javascript', src='/js/jquery.cookie.js')
+    script(type='text/javascript', src='/js/index.js')
+  body
+    div#navbar
+      div#nav-inner
+        h1#title1 book
+        h1#title2 club
+
+        input#search(type='text', placeholder='search')
+
+    div#main
+      div#create
+        a#addnew(href='#') + add a new book
+        span#creator(style='display:none;')
+          h2 title
+          input.create-in#create-title
+          h2 author
+          input.create-in#create-author
+          h2 cover url
+          input.create-in#create-url
+          a#ok(href='#') ok
+          a#cancel(href='#') cancel

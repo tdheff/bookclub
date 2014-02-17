@@ -1,0 +1,154 @@
+{
+    "books": {
+        "slug": "books",
+        "table": {
+            "name": "books",
+            "pk": "uid",
+            "verbose": "books"
+        },
+        "columns": [
+            {
+                "name": "uid",
+                "verbose": "uid",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "author",
+                "verbose": "author",
+                "control": {
+                    "text": true
+                },
+                "type": "varchar(128)",
+                "allowNull": true,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "title",
+                "verbose": "title",
+                "control": {
+                    "text": true
+                },
+                "type": "varchar(128)",
+                "allowNull": true,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "image_url",
+                "verbose": "image_url",
+                "control": {
+                    "text": true
+                },
+                "type": "varchar(512)",
+                "allowNull": true,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": true
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    },
+    "comments": {
+        "slug": "comments",
+        "table": {
+            "name": "comments",
+            "pk": "uid",
+            "verbose": "comments"
+        },
+        "columns": [
+            {
+                "name": "uid",
+                "verbose": "uid",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "book_uid",
+                "verbose": "book_uid",
+                "control": {
+                    "text": true
+                },
+                "type": "int(11)",
+                "allowNull": true,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            },
+            {
+                "name": "comment",
+                "verbose": "comment",
+                "control": {
+                    "text": true
+                },
+                "type": "varchar(512)",
+                "allowNull": true,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
+            }
+        ],
+        "mainview": {
+            "show": true
+        },
+        "listview": {
+            "order": {},
+            "page": 25
+        },
+        "editview": {
+            "readonly": false
+        }
+    }
+}

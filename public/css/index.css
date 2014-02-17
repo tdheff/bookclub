@@ -1,0 +1,192 @@
+/*
+dark blue:     69D2E7
+light blue:    A7DBD8
+tan:           E0E4CC
+light orange:  F38630
+dark orange:   FA6900
+*/
+
+#navbar {
+  width: 100%;
+  height: 120px;
+  background: #C44D58;
+}
+
+#nav-inner {
+  width: 800px;
+  margin: 0px auto;
+  padding-top: 12px;
+}
+
+#nav-inner h1 {
+  font-size: 5.2em;
+  font-weight: 300;
+  display: inline;
+}
+
+#title1 {
+  color: #4ECDC4;
+}
+
+#title2 {
+  color: #ffffff;
+}
+
+#search {
+  float: right;
+  width: 300px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #FF6B6B;
+  border-radius: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  outline: none;
+  color: #ffffff;
+  font-size: 2.0em;
+  margin-top: 32px;
+}
+
+#search:focus {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #ffffff;
+  color: #ffffff;
+}
+
+::-webkit-input-placeholder {
+   color: #FF6B6B;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #FF6B6B;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #FF6B6B;  
+}
+
+:-ms-input-placeholder {  
+   color: #FF6B6B;  
+}
+
+#main {
+  width: 800px;
+  margin: 0px auto;
+  padding-top: 40px;
+}
+
+/* creator */
+
+#create {
+  margin-bottom: 40px;
+}
+
+#addnew {
+  font-size: 1.5em;
+  color: #aaaaaa;
+}
+
+#addnew:hover {
+  color: #a0e210;
+}
+
+#creator {
+  display: inline-block;
+  height: 24px;
+}
+
+#creator h2 {
+  font-size: 1.2em;
+  color: #556270;
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 5px;
+  color: #aaaaaa;
+}
+
+#creator input {
+  display: inline-block;
+  border: 1px solid #aaaaaa;
+  border-radius: 3px;
+  width: 150px;
+  padding-left: 3px;
+  color: #aaaaaa;
+}
+
+#creator input:focus {
+  outline: none;
+}
+
+#creator a {
+  display: inline-block;
+  margin-left: 10px;
+  color: #aaaaaa;
+}
+
+#ok:hover {
+  color: #a0e210;
+}
+
+#cancel:hover {
+  color: #C44D58;
+}
+
+/* books */
+
+.book {
+  margin-bottom: 40px;
+}
+
+.cover {
+  padding: 5px;
+  border: 1px solid #556270;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.cover img {
+  height: 160px;
+}
+
+.text {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 20px;
+  margin-top: 30px;
+  color: #556270;
+}
+
+.text span {
+  display: block;
+}
+
+.text .title {
+  font-size: 3.0em;
+  font-weight: 100;
+  padding-bottom: 5px;
+}
+
+.text .author {
+  font-size: 1.5em;
+  margin-left: 10px;
+}
+
+.controls {
+  font-size: 0.9em;
+  color: #aaaaaa;
+  margin-left: 15px;
+  margin-top: 20px;
+}
+
+.controls a {
+  color: #aaaaaa;
+}
+
+.controls .favorite:hover {
+  color: #a0e210;
+}
+
+.controls .delete:hover {
+  color: #C44D58;
+}

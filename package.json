@@ -1,0 +1,15 @@
+{
+  "name": "bookclub",
+  "description": "a book club app for cs179",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "*",
+    "mysql": "*",
+    "coffee-script": "1.7.1",
+    "connect-coffee-script": "*",
+    "jade": "*",
+    "stylus": "*",
+    "nodemon": "*"
+  }
+}
