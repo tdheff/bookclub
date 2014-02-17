@@ -11,9 +11,18 @@ exports.init = (app, connection) ->
 
   # add one book
   app.post '/books', (req,res) ->
-    connection.query 'INSERT INTO books SET ?', req.body, (err, result) ->
-      if err then throw err
-      res.send 200, uid: result.insertId
+    # sanity checks
+    if not req.body.title or not req.body.author
+      resStr = ''
+      if not req.body.title
+        resStr = resStr + 'book must have a title;'
+      if not req.body.author
+        resStr = resStr + 'book must have an author'
+      res.send 400, resStr
+    else 
+      connection.query 'INSERT INTO books SET ?', req.body, (err, result) ->
+        if err then throw err
+        res.send 200, uid: result.insertId
 
   # get a specific book by id
   app.get '/books/:uid', (req,res) ->

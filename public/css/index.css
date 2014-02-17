@@ -132,6 +132,16 @@ dark orange:   FA6900
   color: #C44D58;
 }
 
+.flash {
+  background: #ffffff;
+  border: 1px solid #C44D58;
+  border-radius: 3px;
+  color: #C44D58;
+  padding: 3px;
+  text-align: center;
+  margin-top: 5px;
+}
+
 /* books */
 
 .book {
@@ -181,6 +191,7 @@ dark orange:   FA6900
 
 .controls a {
   color: #aaaaaa;
+  display: inline;
 }
 
 .controls .favorite:hover {
@@ -189,4 +200,12 @@ dark orange:   FA6900
 
 .controls .delete:hover {
   color: #C44D58;
+}
+
+.controls .comments:hover {
+  color: #4ECDC4;
+}
+
+.text .controls .num-comments {
+  display: inline;
 }
