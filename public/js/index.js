@@ -111,13 +111,14 @@ $( document ).ready(function() {
   });
 
   $('#main').on( 'click', '.delete', function(e) {
+    var bookDom = $(this).parent().parent().parent(); 
     var uid = $(this).parent().parent().children(".uid").text();
     $.ajax({
       type: "POST",
       url: "/books/" + uid,
-    }).done( function () {
+    }).done( function (res) {
       console.log($(this));
-      $(this).parent().parent().parent()
+      bookDom
         .slideUp(600)
         .animate({opacity:0},{queue:false,duration:400});
     });
