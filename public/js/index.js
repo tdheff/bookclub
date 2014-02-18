@@ -109,6 +109,49 @@ function flash(str) {
   }
 }
 
+function addBook() {
+  if(!($('#creator').is(":visible"))) {
+    $('#addnew').fadeOut( function () {
+      $('#creator').fadeIn();
+    });
+
+    $('#cancel').on('click', function (){
+      $('#creator').fadeOut( function () {
+        $('#addnew').fadeIn();
+      });
+    });
+
+    $('#ok').on('click', function () {
+      var title = $('#create-title').val();
+      var author = $('#create-author').val();
+      var url = $('#create-url').val();
+
+      data = {title: title, author: author, image_url: url};
+
+      $.ajax({
+        type: "POST",
+        url: "/books",
+        data: data,
+        statusCode: {
+          200:
+          function (res) {
+            $('.create-in').val('');
+            $('#creator').fadeOut( function () {
+              $('#addnew').fadeIn();
+            });
+            data["uid"] = res.uid;
+            renderBook(data);
+          }
+          ,400:
+          function (res) {
+            flash(res.responseText);
+          }
+        }
+      });
+    });
+  }
+}
+
 $( document ).ready(function() {
   if (!($.cookie('favorites'))) {
 
@@ -118,48 +161,7 @@ $( document ).ready(function() {
     search($(this).val());
   });
 
-  $('#addnew').on('click', function() {
-    if(!($('#creator').is(":visible"))) {
-      $('#addnew').fadeOut( function () {
-        $('#creator').fadeIn();
-      });
-
-      $('#cancel').on('click', function (){
-        $('#creator').fadeOut( function () {
-          $('#addnew').fadeIn();
-        });
-      });
-
-      $('#ok').on('click', function () {
-        var title = $('#create-title').val();
-        var author = $('#create-author').val();
-        var url = $('#create-url').val();
-
-        data = {title: title, author: author, image_url: url};
-
-        $.ajax({
-          type: "POST",
-          url: "/books",
-          data: data,
-          statusCode: {
-            200:
-              function (res) {
-                $('.create-in').val('');
-                $('#creator').fadeOut( function () {
-                  $('#addnew').fadeIn();
-                });
-                data["uid"] = res.uid;
-                renderBook(data);
-              }
-            ,400:
-              function (res) {
-                flash(res.responseText);
-              }
-          }
-        });
-      });
-    }
-  });
+  $('#addnew').on('click', addBook);
 
   $('#main').on( 'click', '.delete', function(e) {
     var bookDom = $(this).parent().parent().parent(); 
