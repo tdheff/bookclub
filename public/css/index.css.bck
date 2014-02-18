@@ -1,79 +1,81 @@
 /*
-green  : #2ecc71
+green  : 395427
 yellow : E8AA47
-red    : #e74c3c
-blue   : #3498db
+red    : BE3021
+blue   : 5583D2
 tan    : FFFFE8
 */
 
 body {
-  background: #ffffff;
+  background: #FFFFE8;
 }
 
 #navbar {
   width: 100%;
-  background: #ffffff;
+  height: 120px;
+  background: #BE3021;
 }
 
 #nav-inner {
-  width: 1200px;
+  width: 800px;
   margin: 0px auto;
   padding-top: 12px;
 }
 
 #nav-inner h1 {
-  font-size: 7.0em;
+  font-size: 5.2em;
   font-weight: 300;
   display: inline;
 }
 
 #title1 {
-  color: #212121;
+  color: #E8AA47;
 }
 
 #title2 {
-  color: #DEDEDE;
+  color: #5583D2;
 }
 
 #search {
   float: right;
-  width: 400px;
+  width: 300px;
   background: none;
   border: none;
-  border-bottom: 1px solid #DEDEDE;
-  padding-left: 5px;
-  padding-right: 5px;
+  border-bottom: 1px solid #FF6B6B;
+  border-radius: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
   outline: none;
   color: #ffffff;
   font-size: 2.0em;
-  margin-top: 48px;
+  margin-top: 32px;
 }
 
 #search:focus {
   background: none;
   border: none;
-  border-bottom: 1px solid #212121;
-  color: #212121;
+  border-bottom: 1px solid #FFF3C0;
+  color: #FFF3C0;
 }
 
 ::-webkit-input-placeholder {
-   color: #DEDEDE;
+   color: #FF6B6B;
 }
 
 :-moz-placeholder { /* Firefox 18- */
-   color: #DEDEDE;  
+   color: #FF6B6B;  
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-   color: #DEDEDE;  
+   color: #FF6B6B;  
 }
 
 :-ms-input-placeholder {  
-   color: #DEDEDE;  
+   color: #FF6B6B;  
 }
 
 #main {
-  width: 1200px;
+  width: 800px;
   margin: 0px auto;
   padding-top: 40px;
 }
@@ -86,11 +88,11 @@ body {
 
 #addnew {
   font-size: 1.5em;
-  color: #DEDEDE;
+  color: #D9D9A7;
 }
 
 #addnew:hover {
-  color: #212121;
+  color: #395427;
 }
 
 #creator {
@@ -104,45 +106,41 @@ body {
   display: inline-block;
   margin-left: 10px;
   margin-right: 5px;
-  color: #dedede;
+  color: #aaaaaa;
 }
 
 #creator input {
   display: inline-block;
-  border: none;
-  border-bottom: 1px solid #dedede;
-  border-radius: 0px;
-  width: 250px;
+  border: 1px solid #aaaaaa;
+  border-radius: 3px;
+  width: 150px;
   padding-left: 3px;
-  color: #222222;
-  font-size: 1.2em;
+  color: #aaaaaa;
 }
 
 #creator input:focus {
   outline: none;
-  border-color: #222222;
-  color: #222222;
 }
 
 #creator a {
   display: inline-block;
   margin-left: 10px;
-  color: #dedede;
+  color: #aaaaaa;
 }
 
 #ok:hover {
-  color: #2ecc71;
+  color: #395427;
 }
 
 #cancel:hover {
-  color: #e74c3c;
+  color: #C44D58;
 }
 
 .flash {
   background: #ffffff;
-  border: 1px solid #e74c3c;
+  border: 1px solid #C44D58;
   border-radius: 3px;
-  color: #e74c3c;
+  color: #C44D58;
   padding: 3px;
   text-align: center;
   margin-top: 5px;
@@ -161,12 +159,6 @@ body {
   display: inline-block;
 }
 
-.cover.faved {
-  border-color: #2ecc71;
-  color: #2ecc71;
-  background: #D0F2DF;
-}
-
 .cover img {
   height: 160px;
 }
@@ -174,7 +166,7 @@ body {
 .text {
   display: inline-block;
   vertical-align: top;
-  width: 1000px;
+  width: 600px;
   margin-left: 20px;
   margin-top: 30px;
   color: #3B3738;
@@ -197,30 +189,26 @@ body {
 
 .controls {
   font-size: 0.9em;
-  color: #dedede;
+  color: #aaaaaa;
   margin-left: 15px;
   margin-top: 20px;
 }
 
 .controls a {
-  color: #dedede;
+  color: #aaaaaa;
   display: inline;
 }
 
-.controls .faved {
-  color: #2ecc71;
-}
-
 .controls .favorite:hover {
-  color: #2ecc71;
+  color: #395427;
 }
 
 .controls .delete:hover {
-  color: #e74c3c;
+  color: #C44D58;
 }
 
 .controls .comments:hover {
-  color: #3498db;
+  color: #4ECDC4;
 }
 
 .text .controls .num-comments {

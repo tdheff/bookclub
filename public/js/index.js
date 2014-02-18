@@ -13,8 +13,6 @@ function renderBooks(books) {
   for (var i = 0; i < books.length; i++) {
     renderBook(books[i]);
   }
-
-  $('.favorite').click(favorite);
 }
 
 // render one book
@@ -38,6 +36,10 @@ function renderBook(book) {
       "</div>" +
     "</div>";
   bookDomObj = $(Mustache.render(mstring,book)).insertAfter('#create').slideDown();
+  if ($.cookie('f' + book.uid) == 'true') {
+    bookDomObj.find('.favorite').addClass('faved');
+    bookDomObj.find('.cover').addClass('faved');
+  }
   renderComments(book.uid, bookDomObj.children('.comment-section'));
 }
 
@@ -64,15 +66,19 @@ function renderComment(comment, domObj) {
 }
 
 function favorite() {
-  /*var uid = $(this).parent().parent().$('.uid').text();
+  var uid = $(this).parent().parent().children('.uid').text();
+  var cover = $(this).parent().parent().parent().children('.cover');
 
+  console.log($(this).hasClass('faved'));
   if ($(this).hasClass('faved')) {
     $(this).removeClass('faved');
+    cover.removeClass('faved');
     $.removeCookie('f' + uid);
   } else {
-    $(this)addClass('faved');
+    $(this).addClass('faved');
+    cover.addClass('faved');
     $.cookie('f' + uid, 'true', {expires: 365, path: '/'});
-  } */
+  }
 }
 
 function search(str) {
@@ -109,7 +115,7 @@ function flash(str) {
   }
 }
 
-function addBook() {
+function openBookAdder() {
   if(!($('#creator').is(":visible"))) {
     $('#addnew').fadeOut( function () {
       $('#creator').fadeIn();
@@ -120,49 +126,56 @@ function addBook() {
         $('#addnew').fadeIn();
       });
     });
-
-    $('#ok').on('click', function () {
-      var title = $('#create-title').val();
-      var author = $('#create-author').val();
-      var url = $('#create-url').val();
-
-      data = {title: title, author: author, image_url: url};
-
-      $.ajax({
-        type: "POST",
-        url: "/books",
-        data: data,
-        statusCode: {
-          200:
-          function (res) {
-            $('.create-in').val('');
-            $('#creator').fadeOut( function () {
-              $('#addnew').fadeIn();
-            });
-            data["uid"] = res.uid;
-            renderBook(data);
-          }
-          ,400:
-          function (res) {
-            flash(res.responseText);
-          }
-        }
-      });
-    });
   }
 }
 
-$( document ).ready(function() {
-  if (!($.cookie('favorites'))) {
+function addBook() {
+  var title = $('#create-title').val();
+  var author = $('#create-author').val();
+  var url = $('#create-url').val();
 
+  if (!url) {
+    url = 'http://upload.wikimedia.org/wikipedia/en/5/53/The_Salmon_of_Doubt_Macmillan_front.jpg';
   }
 
+  data = {title: title, author: author, image_url: url};
+
+  $.ajax({
+    type: "POST",
+    url: "/books",
+    data: data,
+    statusCode: {
+      200:
+      function (res) {
+        $('.create-in').val('');
+        $('#creator').fadeOut( function () {
+          $('#addnew').fadeIn();
+        });
+        data["uid"] = res.uid;
+        renderBook(data);
+      }
+      ,400:
+      function (res) {
+        flash(res.responseText);
+      }
+    }
+  });
+}
+
+$( document ).ready(function() {
+  // bind search function
   $('#search').on('input', function() {
     search($(this).val());
   });
 
-  $('#addnew').on('click', addBook);
+  // bind evens for adding a new book
+  $('#addnew').on('click', openBookAdder);
+  $('#ok').on('click', addBook);
 
+  // bind favoriting
+  $('#main').on( 'click', '.favorite', favorite);
+
+  // bind delete function
   $('#main').on( 'click', '.delete', function(e) {
     var bookDom = $(this).parent().parent().parent(); 
     var uid = $(this).parent().parent().children(".uid").text();
@@ -177,6 +190,7 @@ $( document ).ready(function() {
     });
   });
 
+  // load in the books
   loadBooks(function(books) {
     renderBooks(books);
   });
