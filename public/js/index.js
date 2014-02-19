@@ -27,12 +27,13 @@ function renderBook(book) {
         "<span class='title'>{{title}}</span>" +
         "<span class='author'>{{author}}</span>" +
         "<div class='controls'>" +
-          "<a href='#' class='favorite'>favorite</a> / " +
-          "<a href='#' class='delete'>delete</a> / " +
-          "<a href='#' class='comments'>(<span class='num-comments'>0</span>) comments</a>" +
+          "<span class='favorite click'>favorite</span> / " +
+          "<span class='delete click'>delete</span> / " +
+          "<span class='comments click'>(<span class='num-comments'>0</span>) comments</span>" +
         "</div>" +
-      "</div>" +
-      "<div class='comment-section'>" +
+        "<div class='comment-section' style='display:none;'>" +
+          "<input type='text' class='comment-input' placeholder = '+ add a comment'></input>" +
+        "</div>" +
       "</div>" +
     "</div>";
   bookDomObj = $(Mustache.render(mstring,book)).insertAfter('#create').slideDown();
@@ -40,7 +41,7 @@ function renderBook(book) {
     bookDomObj.find('.favorite').addClass('faved');
     bookDomObj.find('.cover').addClass('faved');
   }
-  renderComments(book.uid, bookDomObj.children('.comment-section'));
+  renderComments(book.uid, bookDomObj.find('.comment-section'));
 }
 
 //render comments as html
@@ -51,7 +52,9 @@ function renderComments(uid, domObj) {
   }).success( function (comments) {
     for (var i = comments.length - 1; i >= 0; i--) {
       renderComment(comments[i], domObj);
-    };
+    }
+    console.log(domObj);
+    domObj.parent().find('.num-comments').text(comments.length);
   });
 }
 
@@ -59,9 +62,9 @@ function renderComments(uid, domObj) {
 function renderComment(comment, domObj) {
   console.log(comment);
   var mstring = 
-    "<div class='comment'>" +
+    "<span class='comment'>" +
       "{{comment}}" +
-    "</div>";
+    "</span>";
   $(Mustache.render(mstring,comment)).appendTo(domObj).slideDown();
 }
 
@@ -162,6 +165,42 @@ function addBook() {
   });
 }
 
+function showHideComments() {
+  var cs = $(this).parent().parent().children(".comment-section");
+
+  if (cs.is(":visible")) {
+    cs
+      .css('opacity','0')
+      .slideUp(300)
+      .fadeTo(500,0);
+  } else {
+    cs
+      .slideDown(300)
+      .fadeTo(500,1);
+  }
+}
+
+function submitComment(domObj) {
+  var uid = domObj.parent().parent().children(".uid").text();
+  var data = {book_uid: uid, comment: domObj.val()};
+  $.ajax({
+    type: "POST",
+    url: "/comments",
+    data: data,
+  }).success( function () {
+    var text = $.trim(domObj.val());
+    var inp = "<input type='text' class='comment-input' placeholder = 'add a comment'></input>";
+    var parent = domObj.parent();
+    if (text.length > 0) {
+      domObj.replaceWith("<span class='comment' style='color:#3498db;'>"+text+"</span>");
+      
+      parent.children().first().animate({color: "#222222"}, 600, function () {
+        $(inp).prependTo(parent).css('display','none').slideDown(600);
+      });
+    }
+  });
+}
+
 $( document ).ready(function() {
   // bind search function
   $('#search').on('input', function() {
@@ -173,7 +212,20 @@ $( document ).ready(function() {
   $('#ok').on('click', addBook);
 
   // bind favoriting
-  $('#main').on( 'click', '.favorite', favorite);
+  $('#main').on('click', '.favorite', favorite);
+
+  // bind comment show/hide
+  $('#main').on('click', '.comments', showHideComments);
+
+  // bind comment submission
+  //$('#main').on('enterKey', '.comment-input', submitComment());
+
+  $('#main').on('keyup', '.comment-input', function(e){
+    if(e.keyCode == 13) {
+        //$(this).trigger("enterKey");
+        submitComment($(this));
+    }
+  });
 
   // bind delete function
   $('#main').on( 'click', '.delete', function(e) {

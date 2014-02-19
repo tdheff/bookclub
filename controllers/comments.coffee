@@ -10,13 +10,13 @@ exports.init = (app, connection) ->
       console.log(rows)
       res.send rows
 
-  # add one book
+  # add one comment
   app.post '/comments', (req,res) ->
     connection.query 'INSERT INTO comments SET ?', req.body, (err, result) ->
       if err then throw err
-      res.send result.insertId
+      res.send 200, uid: result.insertId
 
-  # get a specific book by id
+  # get a specific comment by id
   app.get '/comments/:uid', (req,res) ->
     querystr = 'SELECT * FROM comments WHERE `uid` = ?'
 
@@ -25,7 +25,7 @@ exports.init = (app, connection) ->
       if rows.length > 1 then throw new Error('duplicate elements in database')
       res.send rows[0]
 
-  # delete a specific book by id
+  # delete a specific comment by id
   app.delete 'comments/:uid', (req,res) ->
     query = 'DELETE FROM comments WHERE `uid` = ?'
 

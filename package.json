@@ -11,5 +11,6 @@
     "jade": "*",
     "stylus": "*",
     "nodemon": "*"
-  }
+  },
+  "web": "coffee app.coffee"
 }

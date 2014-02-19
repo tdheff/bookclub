@@ -6,6 +6,14 @@ blue   : #3498db
 tan    : FFFFE8
 */
 
+/* superclass */
+
+.click {
+  cursor: pointer;
+}
+
+/* top of the page */
+
 body {
   background: #ffffff;
 }
@@ -202,7 +210,7 @@ body {
   margin-top: 20px;
 }
 
-.controls a {
+.controls span {
   color: #dedede;
   display: inline;
 }
@@ -225,4 +233,29 @@ body {
 
 .text .controls .num-comments {
   display: inline;
+}
+
+/* comments */
+
+.comment-section {
+  margin-left: 15px;
+  margin-top: 10px;
+  border-top: solid 1px #dedede;
+}
+
+.comment-section .comment {
+  padding: 5px 5px;
+  border-top: solid 1px #dedede;
+}
+
+.comment-section input {
+  border: none;
+  font-size: 16px;
+  width: 100%;
+  padding: 4px 5px;
+  color: #3498db;
+}
+
+.comment-section input:focus {
+  outline: none;
 }
