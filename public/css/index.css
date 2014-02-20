@@ -15,12 +15,13 @@ tan    : FFFFE8
 /* top of the page */
 
 body {
-  background: #ffffff;
+  background: #ecf0f1;
 }
 
 #navbar {
   width: 100%;
-  background: #ffffff;
+  background: #2c3e50;
+  height: 145px;
 }
 
 #nav-inner {
@@ -36,11 +37,11 @@ body {
 }
 
 #title1 {
-  color: #212121;
+  color: #1abc9c;
 }
 
 #title2 {
-  color: #DEDEDE;
+  color: #f1c40f;
 }
 
 #search {
@@ -48,11 +49,11 @@ body {
   width: 400px;
   background: none;
   border: none;
-  border-bottom: 1px solid #DEDEDE;
+  border-bottom: 1px solid #95a5a6;
   padding-left: 5px;
   padding-right: 5px;
   outline: none;
-  color: #ffffff;
+  color: #ecf0f1;
   font-size: 2.0em;
   margin-top: 48px;
 }
@@ -60,24 +61,24 @@ body {
 #search:focus {
   background: none;
   border: none;
-  border-bottom: 1px solid #212121;
-  color: #212121;
+  border-bottom: 1px solid #ecf0f1;
+  color: #ecf0f1;
 }
 
 ::-webkit-input-placeholder {
-   color: #DEDEDE;
+   color: #95a5a6;
 }
 
 :-moz-placeholder { /* Firefox 18- */
-   color: #DEDEDE;  
+   color: #95a5a6;  
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-   color: #DEDEDE;  
+   color: #95a5a6;  
 }
 
 :-ms-input-placeholder {  
-   color: #DEDEDE;  
+   color: #95a5a6;  
 }
 
 #main {
@@ -94,11 +95,11 @@ body {
 
 #addnew {
   font-size: 1.5em;
-  color: #DEDEDE;
+  color: #95a5a6;
 }
 
 #addnew:hover {
-  color: #212121;
+  color: #ecf0f1;
 }
 
 #creator {
@@ -112,30 +113,31 @@ body {
   display: inline-block;
   margin-left: 10px;
   margin-right: 5px;
-  color: #dedede;
+  color: #95a5a6;
 }
 
 #creator input {
   display: inline-block;
   border: none;
-  border-bottom: 1px solid #dedede;
+  border-bottom: 1px solid #95a5a6;
   border-radius: 0px;
   width: 250px;
   padding-left: 3px;
-  color: #222222;
+  background: none;
+  color: #2c3e50;
   font-size: 1.2em;
 }
 
 #creator input:focus {
   outline: none;
-  border-color: #222222;
-  color: #222222;
+  border-color: #2c3e50;
+  color: #2c3e50;
 }
 
 #creator a {
   display: inline-block;
   margin-left: 10px;
-  color: #dedede;
+  color: #95a5a6;
 }
 
 #ok:hover {
@@ -147,7 +149,7 @@ body {
 }
 
 .flash {
-  background: #ffffff;
+  background: #ecf0f1;
   border: 1px solid #e74c3c;
   border-radius: 3px;
   color: #e74c3c;
@@ -190,6 +192,7 @@ body {
 
 .text span {
   display: block;
+  color: #2c3e50;
 }
 
 .text .title {
@@ -205,13 +208,13 @@ body {
 
 .controls {
   font-size: 0.9em;
-  color: #dedede;
+  color: #95a5a6;
   margin-left: 15px;
   margin-top: 20px;
 }
 
 .controls span {
-  color: #dedede;
+  color: #95a5a6;
   display: inline;
 }
 
@@ -240,12 +243,12 @@ body {
 .comment-section {
   margin-left: 15px;
   margin-top: 10px;
-  border-top: solid 1px #dedede;
+  border-top: solid 1px #95a5a6;
 }
 
 .comment-section .comment {
   padding: 5px 5px;
-  border-top: solid 1px #dedede;
+  border-top: solid 1px #95a5a6;
 }
 
 .comment-section input {
@@ -253,6 +256,7 @@ body {
   font-size: 16px;
   width: 100%;
   padding: 4px 5px;
+  background: none;
   color: #3498db;
 }
 
